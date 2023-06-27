@@ -7,7 +7,7 @@ param (
 )
 
 $SecurePWd = ConvertTo-SecureString $password -AsPlainText -Force
-$DomainJoinCred = New-Object System.Management.Automation.PSCredential -ArgumentList ($username@$domainname,$SecurePWd)
+$DomainJoinCred = New-Object System.Management.Automation.PSCredential ($username@$domainname, $SecurePWd)
 Add-Computer -Credential $DomainJoinCred -OUPath $oupath -DomainName $domainname -Server $servername -restart -force
 
 #
